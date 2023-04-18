@@ -3,7 +3,7 @@ function CartWidget(props) {
   const CartWidgetStyle = {
     width: '100%',
     height: '4rem',
-    backgroundColor: '#eee',
+    backgroundColor: 'yellow',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

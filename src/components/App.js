@@ -1,5 +1,5 @@
 import Header from './Header';
-import AccessoryList from './AccessoryList';
+import AccessoryControl from './AccessoryControl';
 import CartWidget from './CartWidget';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <Header />
       <main>
-        <AccessoryList />
+        <AccessoryControl />
         <CartWidget />
       </main>
     </div>
