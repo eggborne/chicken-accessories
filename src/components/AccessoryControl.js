@@ -1,7 +1,7 @@
 
 import React from "react";
 import AccessoryList from "./AccessoryList";
-import NewAccessoryModal from "./NewAccessoryModal";
+import NewAccessoryModal from "./Modal";
 
 class AccessoryControl extends React.Component {
 
@@ -19,7 +19,8 @@ class AccessoryControl extends React.Component {
     }));
   }
 
-  handleAddingNewAccessory = (newAccessory) => {
+  handleAddAccessory = (newAccessory) => {
+    console.log('clicked handleAddAccessory!', newAccessory);
     const newAccessoryList = this.state.accessoryList.concat(newAccessory);
     this.setState({accessoryList: newAccessoryList,
       newFormVisible: false });
@@ -32,9 +33,12 @@ class AccessoryControl extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <AccessoryList newFormVisible={this.state.newFormVisible}
-        handleCancelAddAccessory={this.handleCancelAddAccessory}
+      <AccessoryList 
+        accessoryList={this.state.accessoryList}
+        newFormVisible={this.state.newFormVisible}
         handleClickNewAccessory={this.handleClickNewAccessory}
+        handleCancelAddAccessory={this.handleCancelAddAccessory}
+        handleAddAccessory={this.handleAddAccessory}
       />
       </React.Fragment>
     );

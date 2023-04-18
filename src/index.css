@@ -20,28 +20,75 @@ button {
   border-radius: 0.25rem;
 }
 
+button.green {
+  color: white;
+  font-weight: bold;
+  background-color: rgb(18, 99, 18);
+  width: 90%;
+  padding: 1.5rem;
+}
+
 main {
   margin: 1rem;
   display: grid;
-  grid-template-columns: 65% 1fr;
+  grid-template-columns: 80% 1fr;
   gap: 1rem;
 }
 
 .accessory-list-container {
+  background-color: salmon;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
 }
 
-.accessory-list-header {
+.grid-list-row {
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.grid-list-row > div {
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5rem;
 }
 
 .accessory-list-header > div {
+  
+  font-weight: bold;
   border-bottom: 1px solid black;
   flex-grow: 1;
-  padding: 0rem 0rem 0.5rem 0.5rem;
+}
+
+.accessory-list-item > div {
+  outline: 1px solid black;
+}
+
+input, select, textarea {
+  padding: 0.5rem 0.25rem;
+}
+
+form input, form textarea {
+  width: 60%;
+  font-family: inherit;
+}
+
+form input[type="number"] {
+  width: 20%;
+}
+
+form textarea {
+  height: 5rem;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+}
+
+h2 {
+  margin: 1rem;
 }
