@@ -19,7 +19,7 @@ class AccessoryControl extends React.Component {
           description: 'A sturdy harness with magnetic closures.',
           category: 'Harnesses',
           price: '24',
-          quantity: '250',
+          quantity: '4',
           id: v4(),
         }
       ]

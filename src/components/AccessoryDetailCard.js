@@ -34,7 +34,7 @@ function AccessoryDetailCard(props) {
         <div>{props.item.quantity}</div>
         <div style={buttonAreaStyle}>
           <button onClick={props.onClickGoBack}>Go back</button>
-          <button className='green' onClick={() => handleBuyItem(props.item.id)}>Buy</button>
+          <button disabled={!props.item.quantity} className='green' onClick={() => handleBuyItem(props.item.id)}>{props.item.quantity > 0 ? 'Buy' : 'SOLD OUT'}</button>
         </div>
       </div>
     </React.Fragment>
