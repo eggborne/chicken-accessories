@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 } from 'uuid';
 
 function NewAccessoryForm(props) {
   const newAccessoryFormStyle = {
@@ -25,6 +26,7 @@ function NewAccessoryForm(props) {
       category: event.target.category.value,
       price: event.target.price.value,
       quantity: event.target.quantity.value,
+      id: v4(),
     })
   }
 

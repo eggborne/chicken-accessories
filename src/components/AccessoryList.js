@@ -41,7 +41,8 @@ function AccessoryList(props) {
           <AccessoryListItem 
             specs={{...accessory}}
             labels={itemProps}
-            key={index}
+            id={index}
+            onClickDetails={props.handleClickDetails}
           />
         )}
         <button className='green wide' onClick={props.handleClickNewAccessory}>Add a new accessory</button>

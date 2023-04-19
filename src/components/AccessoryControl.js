@@ -1,7 +1,9 @@
 
 import React from "react";
 import AccessoryList from "./AccessoryList";
-import NewAccessoryModal from "./Modal";
+import AccessoryDetailCard from "./AccessoryDetailCard";
+import { v4 } from 'uuid';
+
 
 class AccessoryControl extends React.Component {
 
@@ -18,14 +20,25 @@ class AccessoryControl extends React.Component {
           category: 'Harnesses',
           price: '24',
           quantity: '250',
+          id: v4(),
         }
       ]
     };
   }
 
+  getAccessoryById = id => {
+    return this.state.accessoryList.filter(accessory => accessory.id === id)[0];
+  }
+
   handleClickNewAccessory = () => {
     this.setState(() => ({
-      newFormVisible: true
+      newFormVisible: true,
+    }));
+  }
+
+  handleClickDetails = (id) => {
+    this.setState(() => ({
+      detailsShowing: id,
     }));
   }
 
@@ -40,18 +53,33 @@ class AccessoryControl extends React.Component {
     this.setState({ newFormVisible: false });
   }
 
+  handleClickDetailsBack = () => {
+    this.setState({ detailsShowing: null });
+  }
+
   render() {
-    return (
-      <React.Fragment>
-      <AccessoryList 
-        accessoryList={this.state.accessoryList}
-        newFormVisible={this.state.newFormVisible}
-        handleClickNewAccessory={this.handleClickNewAccessory}
-        handleCancelAddAccessory={this.handleCancelAddAccessory}
-        handleAddAccessory={this.handleAddAccessory}
-      />
-      </React.Fragment>
-    );
+    if (this.state.detailsShowing === null) {
+      return (
+        <React.Fragment>
+        <AccessoryList 
+          accessoryList={this.state.accessoryList}
+          newFormVisible={this.state.newFormVisible}
+          handleClickNewAccessory={this.handleClickNewAccessory}
+          handleCancelAddAccessory={this.handleCancelAddAccessory}
+          handleAddAccessory={this.handleAddAccessory}
+          handleClickDetails={this.handleClickDetails}
+        />
+        </React.Fragment>
+      );
+    } else {
+      const detailItem = this.getAccessoryById(this.state.detailsShowing);
+      return (
+        <AccessoryDetailCard 
+          item={detailItem}
+          onClickGoBack={this.handleClickDetailsBack}
+        />
+      );
+    }
   }
 
 
