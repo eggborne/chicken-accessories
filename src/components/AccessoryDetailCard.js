@@ -19,6 +19,10 @@ function AccessoryDetailCard(props) {
     gap: '1rem',
   };
 
+  function handleBuyItem(id) {
+    props.onClickBuy(id)
+  }
+
   return (
     <React.Fragment>
       <div style={accessoryDetailCardStyle}>
@@ -30,7 +34,7 @@ function AccessoryDetailCard(props) {
         <div>{props.item.quantity}</div>
         <div style={buttonAreaStyle}>
           <button onClick={props.onClickGoBack}>Go back</button>
-          <button className='green' onClick={props.onClickGoBack}>Buy</button>
+          <button className='green' onClick={() => handleBuyItem(props.item.id)}>Buy</button>
         </div>
       </div>
     </React.Fragment>

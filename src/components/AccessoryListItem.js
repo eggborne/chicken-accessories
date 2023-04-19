@@ -71,12 +71,6 @@ function AccessoryListItem(props) {
           (s < arr.length - 1) && <div style={s ? accessoryCellStyle : nameStyle}>{spec}</div>
         )}
         <div style={uidStyle}>{props.specs.id}</div>
-        {/* <div style={nameStyle}>{props.item}</div>
-        <div style={accessoryCellStyle}>{props.manufacturer}</div>
-        <div style={accessoryCellStyle}>{props.description}</div>
-        <div style={accessoryCellStyle}>{props.category}</div>
-        <div style={accessoryCellStyle}>{props.price}</div>
-        <div style={accessoryCellStyle}>{props.quantity}</div> */}
       </div>
       <div style={buttonAreaStyle}>
         <button id={props.specs.id} onClick={handleSelectDetails} className='details'>See Details</button>

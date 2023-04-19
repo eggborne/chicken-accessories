@@ -26,8 +26,8 @@ class AccessoryControl extends React.Component {
     };
   }
 
-  getAccessoryById = id => {
-    return this.state.accessoryList.filter(accessory => accessory.id === id)[0];
+  getAccessoryById = (id, list=this.state.accessoryList) => {
+    return list.filter(accessory => accessory.id === id)[0];
   }
 
   handleClickNewAccessory = () => {
@@ -51,6 +51,14 @@ class AccessoryControl extends React.Component {
 
   handleCancelAddAccessory = () => {
     this.setState({ newFormVisible: false });
+  }
+
+  handleClickBuy = (id) => {
+    console.log('BOUGHT', id);
+    let newAccessoryList = [...this.state.accessoryList]
+    let boughtItem = this.getAccessoryById(id, newAccessoryList);
+    boughtItem.quantity--;
+    this.setState({ accessoryList: newAccessoryList });
   }
 
   handleClickDetailsBack = () => {
@@ -77,6 +85,8 @@ class AccessoryControl extends React.Component {
         <AccessoryDetailCard 
           item={detailItem}
           onClickGoBack={this.handleClickDetailsBack}
+          onClickBuy={this.handleClickBuy}
+
         />
       );
     }
