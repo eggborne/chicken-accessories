@@ -25,6 +25,7 @@ function AccessoryList(props) {
     pointerEvents: props.newFormVisible ? 'all' : 'none',
     opacity: props.newFormVisible ? '1' : '0',
     transition: 'opacity 200ms ease',
+    zIndex: '1',
   };
 
   const categories = [

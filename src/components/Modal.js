@@ -20,6 +20,7 @@ function Modal(props) {
     opacity: props.showing ? '1' : '0',
     scale: props.showing ? '1' : '0.925',
     transition: 'opacity 200ms ease, scale 200ms ease',
+    zIndex: '2',
   }
 
   return (
