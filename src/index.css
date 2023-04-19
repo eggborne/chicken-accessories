@@ -27,6 +27,13 @@ button.green {
   padding: 1.5rem;
 }
 
+button.orange {
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  padding: 1.5rem;
+}
+
 button.red {
   background-color: rgb(127, 22, 22);
   color: white;

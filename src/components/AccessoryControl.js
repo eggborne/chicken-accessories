@@ -64,6 +64,12 @@ class AccessoryControl extends React.Component {
     }));
   };
 
+  handleClickViewCart = () => {
+    this.setState((prevState) => ({
+      cartShowing: !prevState.cartShowing,
+    }));
+  };
+
   handleAddAccessory = (newAccessory) => {
     console.log('clicked handleAddAccessory!', newAccessory);
     const newAccessoryList = this.state.accessoryList.concat(newAccessory);
@@ -92,10 +98,16 @@ class AccessoryControl extends React.Component {
     this.setState({ detailsShowing: null });
   };
 
+  getCartObjects = () => {
+    return [...this.state.cart].map(itemId => this.getAccessoryById(itemId))
+  }
+
   render() {
-    if (this.state.detailsShowing === null) {
-      return (
-        <React.Fragment>
+    const detailItem = this.getAccessoryById(this.state.detailsShowing);
+    return (
+      <React.Fragment>
+        {!this.state.detailsShowing ?
+          !this.state.cartShowing ?
           <AccessoryList
             accessoryList={this.state.accessoryList}
             newFormVisible={this.state.newFormVisible}
@@ -104,22 +116,18 @@ class AccessoryControl extends React.Component {
             handleAddAccessory={this.handleAddAccessory}
             handleClickDetails={this.handleClickDetails}
           />
-          <CartWidget cart={this.state.cart}/>
-        </React.Fragment>
-      );
-    } else {
-      const detailItem = this.getAccessoryById(this.state.detailsShowing);
-      return (
-        <React.Fragment>
+          :
+          <Cart cart={this.getCartObjects()}/>
+          :
           <AccessoryDetailCard
             item={detailItem}
             onClickGoBack={this.handleClickDetailsBack}
             onClickBuy={this.handleClickBuy}
           />
-          <CartWidget cart={this.state.cart} />
-        </React.Fragment>
-      );
-    }
+        }
+        <CartWidget cartShowing={this.state.cartShowing} cart={this.state.cart} onClickViewCart={this.handleClickViewCart} />
+      </React.Fragment>
+    );
   }
 
 

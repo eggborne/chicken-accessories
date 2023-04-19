@@ -1,17 +1,20 @@
 import React from 'react';
-import CartWidget from './CartWidget';
+import CartItem from './CartItem';
 
 function Cart(props) {
   const cartStyle = {
-    backgroundColor: 'blue',
+    backgroundColor: '#ccc',
+    borderRadius: '1rem',
   };
-  console.log('cart props', props);
   return (
     <React.Fragment>
       <div style={cartStyle}>
-        {props.cart.map(item =>
-          <div>{item}</div>
-        )}
+        <h2>Shopping Cart</h2>
+        <ul>
+          {props.cart.map(item =>
+            <CartItem item={item} />
+          )}
+        </ul>
       </div>
     </React.Fragment>
   );

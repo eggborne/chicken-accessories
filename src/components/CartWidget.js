@@ -17,7 +17,7 @@ function CartWidget(props) {
   return (
     <div style={CartWidgetStyle}>
       <div><span>{props.cart.length} item{props.cart.length === 1 ? '' : 's'} in </span>cart</div>
-      <button className='green'>View Cart</button>
+      <button onClick={props.onClickViewCart} className='green'>{props.cartShowing ? 'Hide Cart' : 'View Cart'}</button>
     </div>
   );
 }
