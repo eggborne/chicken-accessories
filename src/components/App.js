@@ -1,6 +1,6 @@
+import React from 'react';
 import Header from './Header';
 import AccessoryControl from './AccessoryControl';
-import CartWidget from './CartWidget';
 
 function App() {
   return (
@@ -8,7 +8,6 @@ function App() {
       <Header />
       <main>
         <AccessoryControl />
-        <CartWidget />
       </main>
     </div>
   );

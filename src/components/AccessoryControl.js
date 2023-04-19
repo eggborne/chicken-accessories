@@ -2,6 +2,8 @@
 import React from "react";
 import AccessoryList from "./AccessoryList";
 import AccessoryDetailCard from "./AccessoryDetailCard";
+import Cart from './Cart';
+import CartWidget from './CartWidget';
 import { v4 } from 'uuid';
 
 
@@ -12,6 +14,8 @@ class AccessoryControl extends React.Component {
     this.state = {
       newFormVisible: false,
       detailsShowing: null,
+      cartShowing: false,
+      cart: [],
       accessoryList: [
         {
           item: 'Mag Harness 5000',
@@ -44,68 +48,76 @@ class AccessoryControl extends React.Component {
     };
   }
 
-  getAccessoryById = (id, list=this.state.accessoryList) => {
+  getAccessoryById = (id, list = this.state.accessoryList) => {
     return list.filter(accessory => accessory.id === id)[0];
-  }
+  };
 
   handleClickNewAccessory = () => {
     this.setState(() => ({
       newFormVisible: true,
     }));
-  }
+  };
 
   handleClickDetails = (id) => {
     this.setState(() => ({
       detailsShowing: id,
     }));
-  }
+  };
 
   handleAddAccessory = (newAccessory) => {
     console.log('clicked handleAddAccessory!', newAccessory);
     const newAccessoryList = this.state.accessoryList.concat(newAccessory);
-    this.setState({accessoryList: newAccessoryList,
-      newFormVisible: false });
-  }
+    this.setState({
+      accessoryList: newAccessoryList,
+      newFormVisible: false
+    });
+  };
 
   handleCancelAddAccessory = () => {
     this.setState({ newFormVisible: false });
-  }
+  };
 
   handleClickBuy = (id) => {
     console.log('BOUGHT', id);
-    let newAccessoryList = [...this.state.accessoryList]
+    let newAccessoryList = [...this.state.accessoryList];
+    let newCart = [...this.state.cart];
     let boughtItem = this.getAccessoryById(id, newAccessoryList);
+    newCart.push(boughtItem.id);
     boughtItem.quantity--;
-    this.setState({ accessoryList: newAccessoryList });
-  }
+
+    this.setState({ accessoryList: newAccessoryList, cart: newCart });
+  };
 
   handleClickDetailsBack = () => {
     this.setState({ detailsShowing: null });
-  }
+  };
 
   render() {
     if (this.state.detailsShowing === null) {
       return (
         <React.Fragment>
-        <AccessoryList 
-          accessoryList={this.state.accessoryList}
-          newFormVisible={this.state.newFormVisible}
-          handleClickNewAccessory={this.handleClickNewAccessory}
-          handleCancelAddAccessory={this.handleCancelAddAccessory}
-          handleAddAccessory={this.handleAddAccessory}
-          handleClickDetails={this.handleClickDetails}
-        />
+          <AccessoryList
+            accessoryList={this.state.accessoryList}
+            newFormVisible={this.state.newFormVisible}
+            handleClickNewAccessory={this.handleClickNewAccessory}
+            handleCancelAddAccessory={this.handleCancelAddAccessory}
+            handleAddAccessory={this.handleAddAccessory}
+            handleClickDetails={this.handleClickDetails}
+          />
+          <CartWidget cart={this.state.cart}/>
         </React.Fragment>
       );
     } else {
       const detailItem = this.getAccessoryById(this.state.detailsShowing);
       return (
-        <AccessoryDetailCard 
-          item={detailItem}
-          onClickGoBack={this.handleClickDetailsBack}
-          onClickBuy={this.handleClickBuy}
-
-        />
+        <React.Fragment>
+          <AccessoryDetailCard
+            item={detailItem}
+            onClickGoBack={this.handleClickDetailsBack}
+            onClickBuy={this.handleClickBuy}
+          />
+          <CartWidget cart={this.state.cart} />
+        </React.Fragment>
       );
     }
   }
