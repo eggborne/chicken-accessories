@@ -5,15 +5,17 @@ function CartItem(props) {
   const cartItemStyle = {
     backgroundColor: '#ddd',
     display: 'flex',
-    flexDirection: 'column',
-    marginBottom: '2rem',
+    justifyContent: 'space-between',
+    marginBottom: '0.5rem',
+    width: '100%',
+    padding: '0 1rem',
   };
 
   return (
     <div style={cartItemStyle}>
       <div>{props.item.item}</div>
       <div>{props.item.id}</div>
-      <div>{props.item.price}</div>
+      <div>${props.item.price}.00</div>
     </div>
   );
 }

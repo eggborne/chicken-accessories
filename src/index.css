@@ -12,6 +12,10 @@ body {
   font-size: 90%;
 }
 
+ul {
+  
+}
+
 button {
   font-family: inherit;
   font-size: inherit;
@@ -104,7 +108,7 @@ form textarea {
 .form-row {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0.25rem;
   gap: 1rem;
   width: 100%;
 }
