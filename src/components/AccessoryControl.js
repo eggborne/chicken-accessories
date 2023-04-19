@@ -15,13 +15,31 @@ class AccessoryControl extends React.Component {
       accessoryList: [
         {
           item: 'Mag Harness 5000',
-          manufacturer: 'ChickenCo',
+          manufacturer: 'Chickens Inc.',
           description: 'A sturdy harness with magnetic closures.',
           category: 'Harnesses',
           price: '24',
           quantity: '4',
           id: v4(),
-        }
+        },
+        {
+          item: 'Velvet Claw Sheath (set of 2)',
+          manufacturer: 'CluckCo',
+          description: 'A luxurious covering for your pet\'s deadly claws.',
+          category: 'Gloves',
+          price: '125',
+          quantity: '40',
+          id: v4(),
+        },
+        {
+          item: 'Chicken Pants',
+          manufacturer: 'CluckCo',
+          description: 'A one-size-fits-all solution to your chicken\'s rampant nudity.',
+          category: 'Pants',
+          price: '80',
+          quantity: '200',
+          id: v4(),
+        },
       ]
     };
   }

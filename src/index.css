@@ -57,12 +57,6 @@ main {
   gap: 1rem;
 }
 
-.accessory-list-container {
-  background-color: salmon;
-  display: flex;
-  flex-direction: column;
-}
-
 .grid-list-row {
   width: 100%;
   display: grid;
@@ -81,7 +75,6 @@ main {
 }
 .accessory-list-item > div:not(:first-of-type) {
   border-left: 0;
-  /* background: green; */
 }
 
 input, select, textarea {

@@ -29,7 +29,7 @@ function AccessoryList(props) {
   };
 
   const categories = [
-    'hats', 'shirts', 'pants', 'anklets', 'eyewear', 'harnesses'
+    'hats', 'shirts', 'pants', 'anklets', 'eyewear', 'harnesses', 'gloves'
   ];
 
   const itemProps = Object.keys(props.accessoryList[0]);
@@ -42,7 +42,8 @@ function AccessoryList(props) {
           <AccessoryListItem 
             specs={{...accessory}}
             labels={itemProps}
-            id={index}
+            id={accessory.id}
+            key={accessory.id}
             onClickDetails={props.handleClickDetails}
           />
         )}

@@ -60,9 +60,9 @@ function AccessoryListItem(props) {
   }
 
   return (
-    <div style={containerStyle}>
+    <div key={props.specs.id} style={containerStyle}>
       <div style={listHeaderStyle} className="accessory-list-header grid-list-row">
-        {props.labels.map(cat =>
+        {props.labels.map((cat) =>
           cat !== 'id' && <div>{cat[0].toUpperCase() + cat.slice(1)}</div>
         )}
       </div>
