@@ -1,8 +1,7 @@
 import React from "react";
 import Modal from "./Modal";
 import NewAccessoryForm from "./NewAccessoryForm";
-import { findByLabelText } from "@testing-library/react";
-
+import AccessoryListItem from "./AccessoryListItem";
 function AccessoryList(props) {
   const accessoryListStyle = {
     width: '100%',
@@ -29,32 +28,23 @@ function AccessoryList(props) {
   };
 
   const categories = [
-    'hats', 'shirts', 'pants', 'anklets', 'eyewear'
+    'hats', 'shirts', 'pants', 'anklets', 'eyewear', 'harnesses'
   ];
+
+  const itemProps = Object.keys(props.accessoryList[0]);
 
   return (
     <React.Fragment>
       <div style={veilStyle}></div>
       <div style={accessoryListStyle}>
-        <div className="accessory-list-header grid-list-row">
-          <div>Item</div>
-          <div>Manufacturer</div>
-          <div>Description</div>
-          <div>Category</div>
-          <div>Price</div>
-          <div>Quantity</div>
-        </div>
         {props.accessoryList.map((accessory, index) => 
-          <div className='accessory-list-item grid-list-row'>
-            <div>{accessory.item}</div>
-            <div>{accessory.manufacturer}</div>
-            <div>{accessory.description}</div>
-            <div>{accessory.category}</div>
-            <div>{accessory.price}</div>
-            <div>{accessory.quantity}</div>
-          </div>
+          <AccessoryListItem 
+            specs={{...accessory}}
+            labels={itemProps}
+            key={index}
+          />
         )}
-        <button onClick={props.handleClickNewAccessory}>Add a new accessory</button>
+        <button className='green wide' onClick={props.handleClickNewAccessory}>Add a new accessory</button>
       </div>
       {<Modal 
         showing={props.newFormVisible}
@@ -64,7 +54,6 @@ function AccessoryList(props) {
             categories={categories}
             onClickAddAccessory={props.handleAddAccessory}
           />}
-          // onClickAddAccessory={props.handleAddAccessory}
           onClickCancel={props.handleCancelAddAccessory}
       />}
     </React.Fragment>

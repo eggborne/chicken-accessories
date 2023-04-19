@@ -32,29 +32,29 @@ function NewAccessoryForm(props) {
     <React.Fragment>
       <form style={newAccessoryFormStyle} onSubmit={handleNewAccessoryFormSubmission}>
         <div className='form-row'>
-          <label for='item'>Item name</label>
+          <label htmlFor='item'>Item name</label>
           <input name='item' type='text' />
         </div>
         <div className='form-row'>
-          <label for='manufacturer'>Manufacturer</label>
+          <label htmlFor='manufacturer'>Manufacturer</label>
           <input name='manufacturer' type='text' />
         </div>
         <div className='form-row'>
-          <label for='description'>Description</label>
+          <label htmlFor='description'>Description</label>
           <textarea name='description' type='textarea' />
         </div>
         <div className='form-row'>
-          <label for='category'>Category</label>
+          <label htmlFor='category'>Category</label>
           <select name='category'>
-            {props.categories.map((category) => <option name={category}>{`${category[0].toUpperCase()}${category.slice(1)}`}</option>)}
+            {props.categories.map((category, c) => <option key={c} name={category}>{`${category[0].toUpperCase()}${category.slice(1)}`}</option>)}
           </select>
         </div>
         <div className='form-row'>
-          <label for='price'>Price</label>
+          <label htmlFor='price'>Price</label>
           <input name='price' type='number' />
         </div>
         <div className='form-row'>
-          <label for='quantity'>Quantity</label>
+          <label htmlFor='quantity'>Quantity</label>
           <input name='quantity' type='number' />
         </div>
         <button type='submit' className='green'>Save</button>

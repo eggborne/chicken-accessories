@@ -9,7 +9,17 @@ class AccessoryControl extends React.Component {
     super(props);
     this.state = {
       newFormVisible: false,
-      accessoryList: []
+      detailsShowing: null,
+      accessoryList: [
+        {
+          item: 'Mag Harness 5000',
+          manufacturer: 'ChickenCo',
+          description: 'A sturdy harness with magnetic closures.',
+          category: 'Harnesses',
+          price: '24',
+          quantity: '250',
+        }
+      ]
     };
   }
 

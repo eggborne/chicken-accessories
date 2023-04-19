@@ -9,13 +9,13 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 90%;
 }
 
 button {
   font-family: inherit;
   font-size: inherit;
   padding: 1rem 2rem;
-  margin: 1rem;
   cursor: pointer;
   border-radius: 0.25rem;
 }
@@ -24,8 +24,25 @@ button.green {
   color: white;
   font-weight: bold;
   background-color: rgb(18, 99, 18);
-  width: 90%;
   padding: 1.5rem;
+}
+
+button.red {
+  background-color: rgb(127, 22, 22);
+  color: white;
+}
+button.yellow {
+  background-color: rgb(139, 139, 72);
+  color: white;
+}
+
+button.details {
+  background-color: rgb(162, 255, 162);
+  margin: 1rem;
+}
+
+button.wide {
+  margin-top: 1rem;
 }
 
 main {
@@ -44,7 +61,7 @@ main {
 .grid-list-row {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 10rem 0.75fr 1fr 6rem 4rem 5rem;
 }
 
 .grid-list-row > div {
@@ -53,15 +70,13 @@ main {
   padding: 0.5rem;
 }
 
-.accessory-list-header > div {
-  
-  font-weight: bold;
-  border-bottom: 1px solid black;
-  flex-grow: 1;
-}
-
 .accessory-list-item > div {
-  outline: 1px solid black;
+  border-top: 0;
+  border: 1px solid black;
+}
+.accessory-list-item > div:not(:first-of-type) {
+  border-left: 0;
+  /* background: green; */
 }
 
 input, select, textarea {
@@ -89,6 +104,18 @@ form textarea {
   width: 100%;
 }
 
+form button {
+  margin: 1rem;
+}
+
+form button.green {
+  width: 90%;
+}
+
 h2 {
   margin: 1rem;
+}
+
+.capitalized {
+  text-decoration: capitalize;
 }
